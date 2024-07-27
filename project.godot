@@ -11,11 +11,23 @@ config_version=5
 [application]
 
 config/name="LightTest"
-run/main_scene="res://Nova pasta/node_2d.tscn"
+run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://Nova pasta/icon.svg"
+config/icon="res://icon.svg"
+
+[autoload]
+
+LightManager="*res://light_manager.gd"
 
 [rendering]
 
+gl_compatibility/driver.windows="opengl3_angle"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[shader_globals]
+
+MAX_LIGHT_ENERGY={
+"type": "float",
+"value": 4.0
+}

@@ -1,7 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyswqi8evt7r2"]
+[gd_scene load_steps=6 format=3 uid="uid://cyfk265twmu20"]
 
-[ext_resource type="Script" path="res://node_2d.gd" id="1_hx27a"]
-[ext_resource type="Shader" path="res://light_comparator.gdshader" id="1_r0pb8"]
 [ext_resource type="Texture2D" uid="uid://bptwu3jm6jfgu" path="res://icon.svg" id="2_ojhmc"]
 [ext_resource type="Script" path="res://light_detector.gd" id="3_dekl8"]
 [ext_resource type="Script" path="res://Icon.gd" id="3_nd573"]
@@ -15,52 +13,31 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7fyu"]
-shader = ExtResource("1_r0pb8")
-shader_parameter/comparison_value = 4.0
-
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_hx27a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 953.0
-offset_bottom = 595.0
+offset_right = 1463.0
+offset_bottom = 887.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.279887, 0.360791, 0.443891, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(383, 342)
+position = Vector2(603, 295)
 texture = ExtResource("2_ojhmc")
 script = ExtResource("3_nd573")
 
 [node name="Light_Detector" type="Node2D" parent="Icon"]
 script = ExtResource("3_dekl8")
-Thresshold = 1.0
+Thresshold = 0.5
+rectangle = Rect2(-1, -1, 100, 100)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(573, 431)
-energy = 2.0
+position = Vector2(473, 389)
 texture = SubResource("GradientTexture2D_c8dey")
 texture_scale = 10.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(192, 437)
+position = Vector2(736, 421)
 texture = SubResource("GradientTexture2D_c8dey")
 texture_scale = 10.0
-
-[node name="SubViewport" type="SubViewport" parent="."]
-handle_input_locally = false
-canvas_cull_mask = 4294443008
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="SubViewport"]
-self_modulate = Color(0, 0, 0, 1)
-visibility_layer = 524288
-material = SubResource("ShaderMaterial_y7fyu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
