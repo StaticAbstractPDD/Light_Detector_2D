@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwlf383kqkn3r"]
+[gd_scene load_steps=3 format=3 uid="uid://bsl6ck7y6ca04"]
 
 [ext_resource type="Shader" path="res://light_detection_shader.gdshader" id="1_ymic4"]
 

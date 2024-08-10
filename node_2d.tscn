@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyfk265twmu20"]
+[gd_scene load_steps=6 format=3 uid="uid://cyfk265twmu20"]
 
 [ext_resource type="Texture2D" uid="uid://bptwu3jm6jfgu" path="res://icon.svg" id="2_ojhmc"]
 [ext_resource type="Script" path="res://light_detector.gd" id="3_dekl8"]
 [ext_resource type="Script" path="res://Icon.gd" id="3_nd573"]
-[ext_resource type="Script" path="res://PointLight2D.gd" id="4_r2x35"]
 
 [sub_resource type="Gradient" id="Gradient_4ap2x"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -14,15 +13,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5nie"]
-size = Vector2(640, 640)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4tek"]
-size = Vector2(200, 200)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y5xmt"]
-polygon = PackedVector2Array(100, 100, -100, 100, -100, -100, 100, -100)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -30,58 +20,24 @@ offset_right = 1463.0
 offset_bottom = 887.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0892598, 0.126411, 0.164495, 1)
+color = Color(0.279887, 0.360791, 0.443891, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(265, 251)
+position = Vector2(603, 295)
 texture = ExtResource("2_ojhmc")
 script = ExtResource("3_nd573")
 
-[node name="Light_Detector" type="Node2D" parent="Icon" groups=["LightDetector"]]
+[node name="Light_Detector" type="Node2D" parent="Icon"]
 script = ExtResource("3_dekl8")
 Thresshold = 0.5
 rectangle = Rect2(-1, -1, 100, 100)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(919, 565)
-shadow_enabled = true
+position = Vector2(473, 389)
 texture = SubResource("GradientTexture2D_c8dey")
 texture_scale = 10.0
-script = ExtResource("4_r2x35")
-
-[node name="Area2D" type="Area2D" parent="PointLight2D"]
-visible = false
-collision_layer = 2147483648
-collision_mask = 0
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D/Area2D"]
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(919, 565)
-shadow_enabled = true
+position = Vector2(736, 421)
 texture = SubResource("GradientTexture2D_c8dey")
 texture_scale = 10.0
-script = ExtResource("4_r2x35")
-
-[node name="Area2D" type="Area2D" parent="PointLight2D2"]
-visible = false
-collision_layer = 2147483648
-collision_mask = 0
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D2/Area2D"]
-shape = SubResource("RectangleShape2D_h5nie")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(741, 481)
-collision_layer = 1073741825
-collision_mask = 0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-show_behind_parent = true
-shape = SubResource("RectangleShape2D_v4tek")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D"]
-show_behind_parent = true
-occluder = SubResource("OccluderPolygon2D_y5xmt")
